@@ -1,0 +1,202 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:ec="clr-namespace:EpsilonAI.ChatBot;assembly=ChatBot" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="requestID" Type="InArgument(x:String)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>662,1522</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="21">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="21">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap:VirtualizedContainerService.HintSize="561,2224" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="ReqestHelp" />
+      <Variable x:TypeArguments="x:String" Name="dataStr" />
+      <Variable x:TypeArguments="x:String" Name="orderStatus" />
+      <Variable x:TypeArguments="x:String" Name="url" />
+      <Variable x:TypeArguments="x:String" Name="stateStr" />
+      <Variable x:TypeArguments="x:String" Name="CustumerEmailAddres" />
+      <Variable x:TypeArguments="x:String" Name="CUSTEMAILID" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ec:ChatBotScope DisplayName="Chat bot scope" sap:VirtualizedContainerService.HintSize="519,2387" sap2010:WorkflowViewState.IdRef="ChatBotScope_1" Uid="[requestID]">
+      <ec:ChatBotScope.Activities>
+        <ec:GetContextData DisplayName="Get context data" sap:VirtualizedContainerService.HintSize="485,71" sap2010:WorkflowViewState.IdRef="GetContextData_1" To="[dataStr]" Value="name" />
+        <ec:SendChatMessage DisplayName="Send chat message" sap:VirtualizedContainerService.HintSize="485,71" sap2010:WorkflowViewState.IdRef="SendChatMessage_3" Message="[&quot;hello &quot;+dataStr]" />
+        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="485,59" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[dataStr]" />
+        <Assign sap:VirtualizedContainerService.HintSize="485,60" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[orderStatus]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">processed</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ec:SendChatMessage DisplayName="Send chat message" sap:VirtualizedContainerService.HintSize="485,71" sap2010:WorkflowViewState.IdRef="SendChatMessage_2" Message="[&quot;your order is &quot; + orderStatus]" />
+        <ec:GetContextData DisplayName="Get context data" sap:VirtualizedContainerService.HintSize="485,71" sap2010:WorkflowViewState.IdRef="GetContextData_3" To="[CustumerEmailAddres]" Value="email" />
+        <Assign sap:VirtualizedContainerService.HintSize="485,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[CUSTEMAILID]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">[CustumerEmailAddres]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ec:GetContextData DisplayName="Get context data" sap:VirtualizedContainerService.HintSize="485,71" sap2010:WorkflowViewState.IdRef="GetContextData_2" To="[stateStr]" Value="state" />
+        <Assign sap:VirtualizedContainerService.HintSize="485,60" sap2010:WorkflowViewState.IdRef="Assign_3">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">[url]</OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">["https://www.covid19india.org/state/" + stateStr]</InArgument>
+          </Assign.Value>
+        </Assign>
+        <ui:OpenBrowser CommunicationMethod="{x:Null}" Hidden="{x:Null}" NewSession="{x:Null}" Private="{x:Null}" UiBrowser="{x:Null}" BrowserType="Chrome" DisplayName="Open Browser" sap:VirtualizedContainerService.HintSize="485,1181" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" Url="[url]">
+          <ui:OpenBrowser.Body>
+            <ActivityAction x:TypeArguments="x:Object">
+              <ActivityAction.Argument>
+                <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
+              </ActivityAction.Argument>
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,1080" sap2010:WorkflowViewState.IdRef="Sequence_2">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:String" Name="covid19RESULT" />
+                  <Variable x:TypeArguments="x:String" Name="covid19RESULT2" />
+                  <Variable x:TypeArguments="x:String" Name="covid19RESULT3" />
+                  <Variable x:TypeArguments="x:String" Name="covid19RESULT4" />
+                </Sequence.Variables>
+                <sap:WorkflowViewStateService.ViewState>
+                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  </scg:Dictionary>
+                </sap:WorkflowViewStateService.ViewState>
+                <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'DIV'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetValue_1">
+                  <ui:GetValue.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2a4f2799-90ac-4f70-90da-e43ddb251704" InformativeScreenshot="ed9f9576f0af512c2e4c56679027967c" Selector="&lt;html app='chrome.exe' title='Coronavirus Outbreak in * - covid19india.org' /&gt;&lt;webctrl tag='H2' idx='3' /&gt;&lt;nav up='1' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' parentid='root' tag='DIV' idx='1' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:GetValue.Target>
+                  <ui:GetValue.Value>
+                    <OutArgument x:TypeArguments="x:String">[covid19RESULT]</OutArgument>
+                  </ui:GetValue.Value>
+                </ui:GetValue>
+                <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'DIV'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetValue_2">
+                  <ui:GetValue.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2a4f2799-90ac-4f70-90da-e43ddb251704" InformativeScreenshot="4c692148aa2e1dcb27ae1c45a5e1cff3" Selector="&lt;html app='chrome.exe' title='Coronavirus Outbreak in * - covid19india.org' /&gt;&lt;webctrl tag='H2' idx='3' /&gt;&lt;nav up='1' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' parentid='root' tag='DIV' idx='2' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:GetValue.Target>
+                  <ui:GetValue.Value>
+                    <OutArgument x:TypeArguments="x:String">[covid19RESULT2]</OutArgument>
+                  </ui:GetValue.Value>
+                </ui:GetValue>
+                <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'DIV'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetValue_3">
+                  <ui:GetValue.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2a4f2799-90ac-4f70-90da-e43ddb251704" InformativeScreenshot="347f9fe8ff7e27a59404d112c8665f1f" Selector="&lt;html app='chrome.exe' title='Coronavirus Outbreak in * - covid19india.org' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' idx='8' parentid='root' tag='DIV' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:GetValue.Target>
+                  <ui:GetValue.Value>
+                    <OutArgument x:TypeArguments="x:String">[covid19RESULT3]</OutArgument>
+                  </ui:GetValue.Value>
+                </ui:GetValue>
+                <ui:GetValue ContinueOnError="{x:Null}" DisplayName="Get Text 'DIV'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="GetValue_4">
+                  <ui:GetValue.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="2a4f2799-90ac-4f70-90da-e43ddb251704" InformativeScreenshot="0ef901632f455076e4bfb8db0962e7a8" Selector="&lt;html app='chrome.exe' title='Coronavirus Outbreak in * - covid19india.org' /&gt;&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div' idx='9' parentid='root' tag='DIV' /&gt;">
+                      <ui:Target.TimeoutMS>
+                        <InArgument x:TypeArguments="x:Int32" />
+                      </ui:Target.TimeoutMS>
+                      <ui:Target.WaitForReady>
+                        <InArgument x:TypeArguments="ui:WaitForReady" />
+                      </ui:Target.WaitForReady>
+                    </ui:Target>
+                  </ui:GetValue.Target>
+                  <ui:GetValue.Value>
+                    <OutArgument x:TypeArguments="x:String">[covid19RESULT4]</OutArgument>
+                  </ui:GetValue.Value>
+                </ui:GetValue>
+                <ec:SendChatMessage DisplayName="Send chat message" sap:VirtualizedContainerService.HintSize="334,71" sap2010:WorkflowViewState.IdRef="SendChatMessage_4" Message="[&quot;TOP 1: &quot;+covid19RESULT]" />
+                <ec:SendChatMessage DisplayName="Send chat message" sap:VirtualizedContainerService.HintSize="334,71" sap2010:WorkflowViewState.IdRef="SendChatMessage_5" Message="[&quot;TOP 2: &quot; + covid19RESULT2]" />
+                <ec:SendChatMessage DisplayName="Send chat message" sap:VirtualizedContainerService.HintSize="334,71" sap2010:WorkflowViewState.IdRef="SendChatMessage_6" Message="[&quot;TOP 3: &quot; + covid19RESULT3]" />
+                <ec:SendChatMessage DisplayName="Send chat message" sap:VirtualizedContainerService.HintSize="334,71" sap2010:WorkflowViewState.IdRef="SendChatMessage_7" Message="[&quot;TOP 4: &quot; + covid19RESULT4]" />
+              </Sequence>
+            </ActivityAction>
+          </ui:OpenBrowser.Body>
+        </ui:OpenBrowser>
+        <ec:SendChatMessage DisplayName="Send chat message" sap:VirtualizedContainerService.HintSize="485,71" sap2010:WorkflowViewState.IdRef="SendChatMessage_1" Message="[&quot;Thanks this message from stsk Robot&quot;]" />
+        <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" From="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" TimeoutMS="{x:Null}" Body="[&quot;Hello &quot;+dataStr+Environment.NewLine + &quot;Thanks For visiting Stsk Properties happy To Help You If have any quire feelfree ContactUs&quot;]" DisplayName="Send SMTP Mail Message" Email="Cherrychethan22@gmail.com" EnableSSL="True" sap:VirtualizedContainerService.HintSize="485,145" sap2010:WorkflowViewState.IdRef="SendMail_1" IsBodyHtml="False" Password="hgikehvvohlvclwg" Port="587" SecureConnection="Auto" Server="SMTP.gmail.com" Subject="About Covid Results From Stsk" To="[CUSTEMAILID]">
+          <ui:SendMail.Files>
+            <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+          </ui:SendMail.Files>
+        </ui:SendMail>
+      </ec:ChatBotScope.Activities>
+    </ec:ChatBotScope>
+  </Sequence>
+</Activity>
